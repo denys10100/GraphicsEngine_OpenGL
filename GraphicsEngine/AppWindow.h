@@ -1,4 +1,6 @@
 
+
+
 #pragma once
 #include "Window.h"
 #include "GraphicsEngine.h"
@@ -45,7 +47,7 @@ public:
 	void updateSkyBox();
 
 	void drawMesh(const MeshPtr& mesh, const VertexShaderPtr& vs, const PixelShaderPtr & ps, const ConstantBufferPtr& cb,
-		const TexturePtr & tex);
+		 const TexturePtr* list_tex, unsigned int num_textures);
 
 private:
 	SwapChainPtr m_swap_chain;
@@ -54,7 +56,11 @@ private:
 	PixelShaderPtr m_sky_ps;
 	ConstantBufferPtr m_cb;
 	ConstantBufferPtr m_sky_cb;
-	TexturePtr m_wood_tex;
+	TexturePtr m_earth_color_tex;
+	TexturePtr m_earth_spec_tex;
+	TexturePtr m_earth_night_tex;
+	TexturePtr m_clouds_tex;
+
 	TexturePtr m_sky_tex;
 	MeshPtr m_mesh;
 	MeshPtr m_sky_mesh;
@@ -82,7 +88,7 @@ private:
 	Matrix4x4 m_view_cam;
 	Matrix4x4 m_proj_cam;
 
-
+	float m_time = 0.0f;
 
 	bool m_play_state = false;
 	bool m_fullscreen_state = false;
